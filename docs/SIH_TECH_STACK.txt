@@ -1,0 +1,7 @@
+Frontend: Next.js App Router, React, strict TypeScript, Tailwind CSS, reusable UI controls, Lucide, TanStack Query/Table, React Hook Form, Zod, Recharts.
+Backend: Python 3.12, FastAPI, Pydantic, SQLAlchemy 2, Alembic, structured logging and server-side sessions.
+Data: SQLite with foreign keys/WAL, pandas, openpyxl, CSV/XLSX parsing.
+Intelligence: deterministic rules and scikit-learn Isolation Forest.
+Credentials: cryptography Ed25519, qrcode, ReportLab PDFs.
+Quality: pytest, Vitest, Testing Library, Playwright in Brave, TypeScript, ESLint, Ruff, production builds.
+Operation: native PowerShell launch/stop scripts and project-local dependencies.

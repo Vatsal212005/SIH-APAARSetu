@@ -1,0 +1,22 @@
+APAARSetu SIH26263 recording script, approximately 2 minutes 50 seconds at 120 to 130 words per minute.
+
+0:00-0:20. Show central Overview.
+APAARSetu connects student submissions, institutional enrolment compliance and authorized academic verification. Institutions and regulators often need to reconcile individual records with approved capacity. Our demonstration uses fictional institutions, students and identifiers throughout.
+
+0:20-0:40. Open Institutions, then Programmes & Intake.
+The central portal provides a consolidated view of enrolments and category reporting. Institution users see only their permitted records. Capacity approvals remain centrally controlled. NRI admissions, OCI status and Foreign National status remain separate attributes, while supernumerary seats have their own capacity.
+
+0:40-1:15. Open Demo Center A and click Run scenario, then Record review.
+Here, the institution has 120 approved regular seats. The backend counts 135 actual regular admissions and calculates an excess of 15. The screen shows the policy and underlying records. An official requests clarification, and the system retains the decision and audit history. Supernumerary capacity does not conceal a regular-seat excess.
+
+1:15-1:45. Run scenario B and show both records.
+The same synthetic APAAR-like identifier appears at two institutions in the same academic year. We compare dates and statuses and send the overlap for human review. A transfer or permitted concurrent programme can be legitimate. The platform flags the inconsistency without automatically accusing the student of fraud.
+
+1:45-2:25. Run scenario C, Verify signature and consent, then Open verifier. Return and Revoke and verify denial.
+This labelled walkthrough scripts a synthetic student's consent. The actual student wallet provides the same sharing controls. An institution-issued credential carries an Ed25519 signature. The student selects fields and an expiry, and the verifier receives only those fields. Signature, issuer, expiry, revocation and consent checks run on the backend. Revoking consent blocks the next attempt. This signature does not authenticate an official government identity.
+
+2:25-2:45. Run scenario E, expand features, briefly show D's row errors.
+Deterministic rules complement an actual Isolation Forest. Reviewers can inspect the evaluated features and outlier ranking. The mixed-file scenario also uses the real CSV importer and retains rejected-row explanations alongside accepted records.
+
+2:45-3:00. Show architecture slide or return to Overview.
+Next.js, FastAPI and SQLite support native Windows operation without paid AI. APAARSetu demonstrates accountable review and controlled disclosure. Official APAAR and DigiLocker integration requires authorization and is unavailable in this demonstration.

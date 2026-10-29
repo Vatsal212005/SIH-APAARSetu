@@ -1,0 +1,6 @@
+Integrated evidence chain from source admissions through capacity policy, discrepancy review and consent-based verification.
+Separate identity provenance states prevent format checks from being presented as official registry confirmation.
+Configurable category treatment preserves the distinction between NRI admissions, OCI status and Foreign National status.
+Deterministic rules and actual Isolation Forest signals remain independently explainable.
+Canonical Ed25519 credentials combine with live consent and revocation checks instead of unrestricted student lookup.
+Persistent synthetic scenario sessions support judge-facing demonstrations of real services.

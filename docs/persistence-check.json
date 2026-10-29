@@ -1,0 +1,19 @@
+{
+  "before_restart": {
+    "students": 5009,
+    "enrolments": 6010,
+    "academic_credentials": 6,
+    "consent_grants": 12,
+    "student_record_versions": 3,
+    "import_batches": 5
+  },
+  "after_restart": {
+    "students": 5009,
+    "enrolments": 6010,
+    "academic_credentials": 6,
+    "consent_grants": 12,
+    "student_record_versions": 3,
+    "import_batches": 5
+  },
+  "preserved": true
+}

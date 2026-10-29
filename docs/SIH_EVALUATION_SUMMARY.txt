@@ -1,0 +1,12 @@
+APAARSetu reproducible synthetic evaluation
+Seed: 26263
+Statistical model: Isolation Forest, 500 training rows, 240 labelled hold-out rows.
+Precision: 0.80; recall: 1.00; F1: 0.888889.
+TP=40, TN=190, FP=10, FN=0.
+Confusion matrix [TN FP; FN TP]: [[190,10],[0,40]].
+Fit and prediction time: 106.288 ms.
+Deterministic format checks: five labelled cases, precision/recall/F1 1.00, execution 1.129 ms.
+Cross-institution checks: four labelled scenarios covering current overlap, historical transfer, year separation and explicit permitted concurrency. TP=1, TN=3, FP=0, FN=0.
+Actual import service: 200 rows accepted in 255.484 ms.
+These timings are single measured local runs. Small deterministic case sets and synthetic numerical distributions do not establish production accuracy.
+Reproduce with .venv\Scripts\python.exe scripts\evaluate.py. Machine results: docs/evaluation.json. Labelled numerical data: demo-data/evaluation/holdout-labelled.csv.

@@ -1,0 +1,74 @@
+{
+  "synthetic_only": true,
+  "seed": 26263,
+  "training_rows": 500,
+  "holdout_rows": 240,
+  "statistical": {
+    "precision": 0.8,
+    "recall": 1.0,
+    "f1": 0.8888888888888888,
+    "true_negatives": 190,
+    "false_positives": 10,
+    "false_negatives": 0,
+    "true_positives": 40,
+    "confusion_matrix": [
+      [
+        190,
+        10
+      ],
+      [
+        0,
+        40
+      ]
+    ]
+  },
+  "model_latency_ms": 106.288,
+  "deterministic_format": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "true_negatives": 2,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "true_positives": 3,
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "validation_latency_ms": 1.129,
+  "cross_institution": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "true_negatives": 3,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "true_positives": 1,
+    "confusion_matrix": [
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "import_processing_ms": 255.484,
+  "import_rows": 200,
+  "import_counts": {
+    "accepted": 200,
+    "rejected": 0,
+    "flagged": 0,
+    "duplicates": 0
+  },
+  "limitations": "Synthetic distributions only. Cross-institution evaluation uses four labelled scenarios and format validation five cases; neither small set establishes real-world accuracy."
+}

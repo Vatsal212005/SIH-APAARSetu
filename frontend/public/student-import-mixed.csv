@@ -1,0 +1,8 @@
+apaar_id,full_name,date_of_birth,institution_student_id,admission_date,seat_type,nri_category,oci_status,foreign_national
+799999999901,Asha Synthetic Upload,2005-02-14,UPLOAD-001,2025-08-01,regular,false,false,false
+799999999902,Rohan Synthetic Upload,2004-11-03,UPLOAD-002,2025-08-01,supernumerary,false,true,false
+12345,Invalid Format Student,2005-06-10,UPLOAD-003,2025-08-01,regular,false,false,false
+,Missing Identifier Student,2004-03-22,UPLOAD-004,2025-08-01,regular,false,false,false
+799999999901,Duplicate Batch Student,2005-02-14,UPLOAD-005,2025-08-01,regular,false,false,false
+799999999906,Invalid Date Student,2005-08-19,UPLOAD-006,not-a-date,regular,true,false,false
+
