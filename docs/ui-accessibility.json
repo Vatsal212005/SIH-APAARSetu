@@ -1,0 +1,1399 @@
+[
+  {
+    "name": "public-home",
+    "url": "/",
+    "checkedAt": "2026-10-29T12:41:42.783Z",
+    "passes": 26,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "login",
+    "url": "/login",
+    "checkedAt": "2026-10-29T12:41:43.481Z",
+    "passes": 26,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "login-hindi",
+    "url": "/login",
+    "checkedAt": "2026-10-29T12:41:43.835Z",
+    "passes": 26,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard",
+    "checkedAt": "2026-10-29T12:42:03.561Z",
+    "passes": 31,
+    "incomplete": 2,
+    "incompleteDetails": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(3) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(3) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".legend-item-0 > .recharts-legend-item-text"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".legend-item-1 > .recharts-legend-item-text"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"275.8333333333333\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"491.34375\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"172.8125\"][text-anchor=\"end\"][height=\"167.8125\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "text[y=\"130.859375\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"88.90625\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"46.953125\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"10.3984375\"][text-anchor=\"end\"][height=\"167.8125\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".recharts-cartesian-axis-tick-label.recharts-layer:nth-child(1) > text[y=\"205\"][text-anchor=\"middle\"][width=\"337\"] > tspan[dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "tspan[x=\"199.25\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"283.5\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"367.75\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"440.84375\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"29.549999999999997\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"68.94999999999999\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"108.35\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"147.75\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"187.14999999999998\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"318\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"192\"][text-anchor=\"end\"][x=\"57\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "text[y=\"145.25\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"98.5\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"51.75\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".dashboard-grid:nth-child(6) > .card:nth-child(1) > .card-content > .chart-box[role=\"img\"] > .recharts-responsive-container > div > .recharts-wrapper[width=\"576\"][height=\"227\"] > svg[viewBox=\"0 0 576 227\"][role=\"application\"][width=\"576\"] > .recharts-zIndex-layer_2000 > .recharts-yAxis-tick-labels.recharts-cartesian-axis-tick-labels > .recharts-cartesian-axis-tick-label.recharts-layer:nth-child(5) > text[y=\"10.3984375\"][text-anchor=\"end\"][x=\"57\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "institutions",
+    "url": "/institutions",
+    "checkedAt": "2026-10-29T12:42:06.104Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "students",
+    "url": "/students",
+    "checkedAt": "2026-10-29T12:42:08.733Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "intakes",
+    "url": "/intakes",
+    "checkedAt": "2026-10-29T12:42:11.643Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "enrolments",
+    "url": "/enrolments",
+    "checkedAt": "2026-10-29T12:42:13.660Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "anomalies",
+    "url": "/anomalies",
+    "checkedAt": "2026-10-29T12:42:14.857Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "manage",
+    "url": "/manage",
+    "checkedAt": "2026-10-29T12:42:16.291Z",
+    "passes": 24,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "reports",
+    "url": "/reports",
+    "checkedAt": "2026-10-29T12:42:18.601Z",
+    "passes": 28,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications",
+    "checkedAt": "2026-10-29T12:42:20.625Z",
+    "passes": 21,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "audit",
+    "url": "/audit",
+    "checkedAt": "2026-10-29T12:42:23.618Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "settings",
+    "url": "/settings",
+    "checkedAt": "2026-10-29T12:42:25.020Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "demo",
+    "url": "/demo",
+    "checkedAt": "2026-10-29T12:42:27.760Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "institution-case",
+    "url": "/institutions/f0516741-769b-582f-bda0-acc8c795a157",
+    "checkedAt": "2026-10-29T12:42:34.419Z",
+    "passes": 22,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "intake-cohort-evidence",
+    "url": "/anomalies",
+    "checkedAt": "2026-10-29T12:42:38.056Z",
+    "passes": 29,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "cross-institution-evidence",
+    "url": "/anomalies",
+    "checkedAt": "2026-10-29T12:42:39.070Z",
+    "passes": 30,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "student-dashboard",
+    "url": "/dashboard",
+    "checkedAt": "2026-10-29T12:42:41.028Z",
+    "passes": 23,
+    "incomplete": 2,
+    "incompleteDetails": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(3) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(3) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "student-wallet",
+    "url": "/credentials",
+    "checkedAt": "2026-10-29T12:42:42.835Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "consent-fields",
+    "url": "/credentials",
+    "checkedAt": "2026-10-29T12:42:43.423Z",
+    "passes": 25,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "institution-dashboard",
+    "url": "/dashboard",
+    "checkedAt": "2026-10-29T12:42:45.693Z",
+    "passes": 31,
+    "incomplete": 2,
+    "incompleteDetails": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-hint"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-hint"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".legend-item-0 > .recharts-legend-item-text"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".legend-item-1 > .recharts-legend-item-text"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"149.33333333333331\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"486.66666666666663\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"172.8125\"][text-anchor=\"end\"][height=\"167.8125\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "text[y=\"130.859375\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"88.90625\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"46.953125\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"10.3984375\"][text-anchor=\"end\"][height=\"167.8125\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[dy=\"0.71em\"][x=\"115\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "tspan[x=\"199.25\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"283.5\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"367.75\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"440.84375\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"318\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"192\"][text-anchor=\"end\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "text[y=\"145.25\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".recharts-cartesian-axis-tick-label.recharts-layer:nth-child(3) > text[y=\"98.5\"][text-anchor=\"end\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"51.75\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".dashboard-grid:nth-child(7) > .card:nth-child(1) > .card-content > .chart-box[role=\"img\"] > .recharts-responsive-container > div > .recharts-wrapper[width=\"576\"][height=\"227\"] > svg[viewBox=\"0 0 576 227\"][role=\"application\"][width=\"576\"] > .recharts-zIndex-layer_2000 > .recharts-yAxis-tick-labels.recharts-cartesian-axis-tick-labels > .recharts-cartesian-axis-tick-label.recharts-layer:nth-child(5) > text[y=\"10.3984375\"][text-anchor=\"end\"] > tspan[dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "institution-upload",
+    "url": "/imports",
+    "checkedAt": "2026-10-29T12:42:47.667Z",
+    "passes": 27,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "credential-revocation-dialog",
+    "url": "/credentials",
+    "checkedAt": "2026-10-29T12:42:48.529Z",
+    "passes": 12,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#revoke-description-c24ba6cd-9609-4572-8811-aa9ef66b7f5b"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "mobile-dashboard",
+    "url": "/dashboard",
+    "checkedAt": "2026-10-29T12:42:55.427Z",
+    "passes": 32,
+    "incomplete": 2,
+    "incompleteDetails": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(1) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(2) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(3) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(3) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(4) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(5) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-label"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".metric-card.card:nth-child(6) > div:nth-child(2) > .metric-value"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".legend-item-0 > .recharts-legend-item-text"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".legend-item-1 > .recharts-legend-item-text"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"224.34375\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"157.8125\"][text-anchor=\"end\"][height=\"152.8125\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "text[y=\"119.609375\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"81.40625\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"43.203125\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"10.3984375\"][text-anchor=\"end\"][height=\"152.8125\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".recharts-cartesian-axis-tick-label.recharts-layer:nth-child(1) > text[y=\"190\"][text-anchor=\"middle\"][height=\"30\"] > tspan[dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "tspan[x=\"163.5\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"212\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"260.5\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"297.84375\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"27.299999999999997\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"63.699999999999996\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"100.1\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"136.5\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"172.89999999999998\"] > tspan[x=\"107\"][dy=\"0.355em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "tspan[x=\"184.5\"][dy=\"0.71em\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"177\"][text-anchor=\"end\"][x=\"57\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              "text[y=\"134\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"91\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              "text[y=\"48\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "target": [
+              ".dashboard-grid:nth-child(6) > .card:nth-child(1) > .card-content > .chart-box[role=\"img\"] > .recharts-responsive-container > div > .recharts-wrapper[width=\"309\"][height=\"212\"] > .recharts-surface[role=\"application\"][viewBox=\"0 0 309 212\"] > .recharts-zIndex-layer_2000 > .recharts-yAxis-tick-labels.recharts-cartesian-axis-tick-labels > .recharts-cartesian-axis-tick-label.recharts-layer:nth-child(5) > text[y=\"10.3984375\"][text-anchor=\"end\"][x=\"57\"] > tspan[dy=\"0.355em\"][x=\"57\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "about",
+    "url": "/about",
+    "checkedAt": "2026-10-29T12:42:59.116Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "help",
+    "url": "/help",
+    "checkedAt": "2026-10-29T12:43:00.811Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "privacy",
+    "url": "/privacy",
+    "checkedAt": "2026-10-29T12:43:02.477Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "accessibility",
+    "url": "/accessibility",
+    "checkedAt": "2026-10-29T12:43:05.510Z",
+    "passes": 23,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "verify",
+    "url": "/verify/invalid-reference-000000000",
+    "checkedAt": "2026-10-29T12:43:09.118Z",
+    "passes": 24,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "verification-hindi",
+    "url": "/verify/invalid-reference-000000000",
+    "checkedAt": "2026-10-29T12:43:09.488Z",
+    "passes": 24,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "student-case",
+    "url": "/students/2724d852-6916-5bd2-a189-a5c278e9b146",
+    "checkedAt": "2026-10-29T12:43:15.115Z",
+    "passes": 25,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  },
+  {
+    "name": "student-case-auditor",
+    "url": "/students/2724d852-6916-5bd2-a189-a5c278e9b146",
+    "checkedAt": "2026-10-29T12:43:17.728Z",
+    "passes": 25,
+    "incomplete": 1,
+    "incompleteDetails": [
+      {
+        "id": "label-content-name-mismatch",
+        "nodes": [
+          {
+            "target": [
+              "button[aria-label=\"A Reset text size\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "violations": []
+  }
+]

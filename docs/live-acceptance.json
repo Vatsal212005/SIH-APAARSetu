@@ -1,17 +1,17 @@
 {
-  "checked_at": "2026-10-29T05:47:29.295756+00:00",
+  "checked_at": "2026-10-29T12:45:21.262836+00:00",
   "project_root": "C:\\Users\\ironm\\OneDrive\\Desktop\\APAARSetu",
   "backend_healthy": true,
   "frontend_status": 200,
   "dashboard_metrics": {
     "institutions": 100,
-    "student_records": 5009,
-    "submitted_records": 6010,
+    "student_records": 5019,
+    "submitted_records": 6020,
     "pending_review": 57,
     "invalid_apaar": 0,
     "unresolved_findings": 8,
     "nri_admissions": 147,
-    "oci_students": 58,
+    "oci_students": 63,
     "foreign_national_students": 39
   },
   "intake_scenario": {

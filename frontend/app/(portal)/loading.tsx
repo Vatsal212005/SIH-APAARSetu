@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="page" aria-busy="true" role="status"><h1>Loading workspace…</h1><p>Loading the selected service and its authorized records.</p><div className="loading-grid">{[1,2,3,4].map(i=><div className="skeleton" key={i}/>)}</div></div>;}

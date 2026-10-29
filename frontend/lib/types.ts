@@ -8,7 +8,12 @@ export type User = {
   region: string | null;
 };
 
-export type Paginated<T> = {items: T[]; total: number; page: number; page_size?: number};
+export type Paginated<T> = {
+  items: T[];
+  total: number;
+  page: number;
+  page_size?: number;
+};
 
 export type Finding = {
   id: string;
@@ -25,4 +30,3 @@ export type Finding = {
   resolution: string | null;
   created_at: string;
 };
-

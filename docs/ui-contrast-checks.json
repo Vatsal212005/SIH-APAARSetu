@@ -1,0 +1,62 @@
+[
+  {
+    "pair": "Primary text / white",
+    "foreground": "#203247",
+    "background": "#ffffff",
+    "ratio": 13.05
+  },
+  {
+    "pair": "Secondary text / white",
+    "foreground": "#536778",
+    "background": "#ffffff",
+    "ratio": 5.87
+  },
+  {
+    "pair": "Navy / white",
+    "foreground": "#123b63",
+    "background": "#ffffff",
+    "ratio": 11.47
+  },
+  {
+    "pair": "Teal text / pale teal",
+    "foreground": "#0f615a",
+    "background": "#e8f4f0",
+    "ratio": 6.47
+  },
+  {
+    "pair": "Success badge",
+    "foreground": "#187347",
+    "background": "#edf7f0",
+    "ratio": 5.35
+  },
+  {
+    "pair": "Warning badge",
+    "foreground": "#99520c",
+    "background": "#fff4e2",
+    "ratio": 5.41
+  },
+  {
+    "pair": "Error badge",
+    "foreground": "#b42318",
+    "background": "#fff0ee",
+    "ratio": 5.93
+  },
+  {
+    "pair": "Information badge",
+    "foreground": "#245d92",
+    "background": "#eaf2fa",
+    "ratio": 6.08
+  },
+  {
+    "pair": "Input boundary / white",
+    "foreground": "#8195a5",
+    "background": "#ffffff",
+    "ratio": 3.1
+  },
+  {
+    "pair": "Focus outline / white",
+    "foreground": "#b65f00",
+    "background": "#ffffff",
+    "ratio": 4.54
+  }
+]

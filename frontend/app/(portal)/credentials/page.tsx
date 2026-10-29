@@ -1,20 +1,400 @@
 "use client";
+import {parseTimestamp} from "@/lib/utils";
 
-import {CheckCircle2, Copy, ExternalLink, LockKeyhole} from "lucide-react";
-import {useState} from "react";
-import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {api} from "@/lib/api";
-import {Alert} from "@/components/ui/alert";
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {Input, Label} from "@/components/ui/input";
+import { CheckCircle2, Copy, ExternalLink, LockKeyhole } from "lucide-react";
+import { useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { api } from "@/lib/api";
+import { Alert } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input, Label } from "@/components/ui/input";
 
-import {IssuanceTools, AccessHistory, ShareQr, CredentialRevoke, CertificateDownload} from '@/features/credential-tools';
+import {
+  IssuanceTools,
+  AccessHistory,
+  ShareQr,
+  CredentialRevoke,
+  CertificateDownload,
+} from "@/features/credential-tools";
 
-import type {User} from '@/lib/types';
-type Credential={id:string;credential_code:string;payload:{issuer:{name:string};subject:{name:string;apaar_masked:string};academic_record:{programme:string;specialization:string;academic_year:string;enrolment_status:string}};signature_valid:boolean;expired:boolean;revoked:boolean;key_id:string;expires_at:string};
-type Consent={id:string;credential_id:string;verifier_name:string;purpose:string;fields:string[];expires_at:string;revoked_at:string|null};
-const fieldOptions=["student_name","institution","programme","specialization","academic_year","enrolment_status","institution_student_id","apaar_masked"];
-export default function CredentialsPage(){const client=useQueryClient();const me=useQuery({queryKey:['me'],queryFn:()=>api<{user:User}>('/auth/me')});const[hours,setHours]=useState(24);const[selected,setSelected]=useState<string|null>(null);const[verifier,setVerifier]=useState("Synthetic Employer Verification Desk");const[fields,setFields]=useState<string[]>(["student_name","institution","programme","academic_year","enrolment_status"]);const[share,setShare]=useState<{id:string;token:string;verification_path:string}|null>(null);const credentials=useQuery({queryKey:["credentials"],queryFn:()=>api<{items:Credential[]}>("/credentials")});const consents=useQuery({queryKey:["consents"],queryFn:()=>api<{items:Consent[]}>("/consents"),enabled:me.data?.user.role==="student",retry:false});const grant=useMutation({mutationFn:(credential_id:string)=>api<{id:string;token:string;verification_path:string}>("/consents",{method:"POST",body:JSON.stringify({credential_id,verifier_name:verifier,purpose:"Recruitment eligibility verification",fields,expires_in_hours:hours})}),onSuccess:(value)=>{setShare(value);client.invalidateQueries({queryKey:["consents"]})}});const revoke=useMutation({mutationFn:(id:string)=>api(`/consents/${id}/revoke`,{method:"POST"}),onSuccess:()=>client.invalidateQueries({queryKey:["consents"]})});const shareUrl=share&&typeof window!=="undefined"?`${window.location.origin}${share.verification_path}`:"";return <div className="page"><div className="page-header"><div className="page-title"><h1>Credential wallet & consent</h1><p>Institution-issued demonstration credentials use actual Ed25519 signatures and disclose only student-authorized fields.</p></div></div><Alert title="Trust boundary">Cryptographic validity confirms the APAARSetu demonstration issuer and untampered payload. It does not confirm an official APAAR identity.</Alert><IssuanceTools/><AccessHistory/>{grant.error&&<Alert title="Unable to grant consent" tone="danger">{grant.error.message}</Alert>}<div className="grid-list" style={{marginTop:16}}>{credentials.data?.items.map((item)=><Card key={item.id}><CardHeader><div style={{display:"flex",justifyContent:"space-between",gap:12}}><div><CardTitle>{item.payload.academic_record.programme} — {item.payload.academic_record.specialization}</CardTitle><CardDescription>{item.payload.issuer.name} · {item.payload.academic_record.academic_year} · {item.credential_code}</CardDescription></div><div><Badge tone={item.signature_valid?"green":"red"}>{item.signature_valid?"Signature valid":"Signature invalid"}</Badge> {item.revoked&&<Badge tone="red">Revoked</Badge>}</div></div></CardHeader><CardContent><div className="key-values"><div className="key-value"><span>Subject</span><strong>{item.payload.subject.name}</strong></div><div className="key-value"><span>APAAR-linked ID</span><strong>{item.payload.subject.apaar_masked}</strong></div><div className="key-value"><span>Signing key</span><strong>{item.key_id}</strong></div><div className="key-value"><span>Expiry</span><strong>{new Date(item.expires_at).toLocaleDateString("en-IN")}</strong></div></div><div className="page-actions" style={{marginTop:16}}>{me.data?.user.role==="student"&&<Button size="sm" onClick={()=>setSelected(selected===item.id?null:item.id)}><LockKeyhole size={14}/> Share / Verify</Button>}<CertificateDownload id={item.id}/><CredentialRevoke id={item.id}/></div>{selected===item.id&&<div className="card" style={{marginTop:16,padding:16,background:"#f8fafb"}}><Label>Authorized recipient</Label><Input value={verifier} onChange={(e)=>setVerifier(e.target.value)}/><Label style={{marginTop:12}}>Consent duration (hours)</Label><Input type="number" min={1} max={720} value={hours} onChange={e=>setHours(Number(e.target.value))}/><Label style={{marginTop:12}}>Fields to disclose</Label><div className="consent-fields">{fieldOptions.map((field)=><label className="checkbox-row" key={field}><input type="checkbox" checked={fields.includes(field)} onChange={(e)=>setFields(e.target.checked?[...fields,field]:fields.filter((f)=>f!==field))}/>{field.replaceAll("_"," ")}</label>)}</div><Button size="sm" onClick={()=>grant.mutate(item.id)} disabled={grant.isPending||!fields.length}>{grant.isPending?"Creating secure disclosure…":"Grant 24-hour consent"}</Button></div>}</CardContent></Card>)}{credentials.isLoading&&<div className="skeleton"/>}</div>{share&&<Card style={{marginTop:16,borderColor:"#9edbd2"}}><CardHeader><CardTitle>Secure disclosure created</CardTitle><CardDescription>The opaque bearer reference is shown once; only its keyed hash is stored.</CardDescription></CardHeader><CardContent><div className="alert alert-success"><CheckCircle2 size={19}/><div><strong>Consent is active</strong><div>Open the verifier experience to perform the actual signature, expiry, revocation and consent checks.</div></div></div><div className="filter-bar" style={{marginTop:12}}><ShareQr token={share.token} credentialId={selected??undefined}/><Input readOnly value={shareUrl}/><Button size="sm" onClick={()=>navigator.clipboard.writeText(shareUrl)}><Copy size={14}/> Copy</Button><a className="btn btn-secondary btn-sm" href={share.verification_path} target="_blank"><ExternalLink size={14}/> Verify</a></div></CardContent></Card>}{consents.data?.items.length?<Card style={{marginTop:16}}><CardHeader><CardTitle>Consent history</CardTitle></CardHeader><CardContent><div className="grid-list">{consents.data.items.map((item)=><div className="check-row" key={item.id}><span><strong>{item.verifier_name}</strong><span className="table-secondary">{item.purpose} · expires {new Date(item.expires_at).toLocaleString("en-IN")}</span></span>{item.revoked_at?<Badge tone="red">Revoked</Badge>:<Button variant="danger" size="sm" onClick={()=>revoke.mutate(item.id)}>Revoke access</Button>}</div>)}</div></CardContent></Card>:null}</div>}
-
+import type { User } from "@/lib/types";
+type Credential = {
+  id: string;
+  credential_code: string;
+  payload: {
+    issuer: { name: string };
+    subject: { name: string; apaar_masked: string };
+    academic_record: {
+      programme: string;
+      specialization: string;
+      academic_year: string;
+      enrolment_status: string;
+    };
+  };
+  signature_valid: boolean;
+  expired: boolean;
+  revoked: boolean;
+  key_id: string;
+  expires_at: string;
+};
+type Consent = {
+  id: string;
+  credential_id: string;
+  verifier_name: string;
+  purpose: string;
+  fields: string[];
+  expires_at: string;
+  revoked_at: string | null;
+};
+const fieldOptions = [
+  "student_name",
+  "institution",
+  "programme",
+  "specialization",
+  "academic_year",
+  "enrolment_status",
+  "institution_student_id",
+  "apaar_masked",
+];
+export default function CredentialsPage() {
+  const client = useQueryClient();
+  const me = useQuery({
+    queryKey: ["me"],
+    queryFn: () => api<{ user: User }>("/auth/me"),
+  });
+  const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState("");
+  const [hours, setHours] = useState(24);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [verifier, setVerifier] = useState(
+    "Synthetic Employer Verification Desk",
+  );
+  const [fields, setFields] = useState<string[]>([
+    "student_name",
+    "institution",
+    "programme",
+    "academic_year",
+    "enrolment_status",
+  ]);
+  const [share, setShare] = useState<{
+    id: string;
+    token: string;
+    verification_path: string;
+  } | null>(null);
+  const credentials = useQuery({
+    queryKey: ["credentials"],
+    queryFn: () => api<{ items: Credential[] }>("/credentials"),
+  });
+  const consents = useQuery({
+    queryKey: ["consents"],
+    queryFn: () => api<{ items: Consent[] }>("/consents"),
+    enabled: me.data?.user.role === "student",
+    retry: false,
+  });
+  const grant = useMutation({
+    mutationFn: (credential_id: string) =>
+      api<{ id: string; token: string; verification_path: string }>(
+        "/consents",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            credential_id,
+            verifier_name: verifier,
+            purpose: "Recruitment eligibility verification",
+            fields,
+            expires_in_hours: hours,
+          }),
+        },
+      ),
+    onSuccess: (value) => {
+      setShare(value);
+      client.invalidateQueries({ queryKey: ["consents"] });
+    },
+  });
+  const revoke = useMutation({
+    mutationFn: (id: string) =>
+      api(`/consents/${id}/revoke`, { method: "POST" }),
+    onSuccess: (_, id) => {
+      if (share?.id === id) setShare(null);
+      client.invalidateQueries({ queryKey: ["consents"] });
+    },
+  });
+  const shareUrl =
+    share && typeof window !== "undefined"
+      ? `${window.location.origin}${share.verification_path}`
+      : "";
+  return (
+    <div className="page">
+      <div className="page-header">
+        <div className="page-title">
+          <h1>Academic Credential Wallet</h1>
+          <p>
+            Institution-issued demonstration credentials use actual Ed25519
+            signatures and disclose only student-authorized fields.
+          </p>
+        </div>
+      </div>
+      <Alert title="Trust boundary">
+        Cryptographic validity confirms the APAARSetu demonstration issuer and
+        untampered payload. It does not confirm an official APAAR identity.
+      </Alert>
+      <IssuanceTools />
+      {copyError && (
+        <Alert title="Copy link" tone="warning">
+          {copyError}
+        </Alert>
+      )}
+      {revoke.error && (
+        <Alert title="Revocation failed" tone="danger">
+          {revoke.error.message}
+        </Alert>
+      )}
+      {grant.error && (
+        <Alert title="Unable to grant consent" tone="danger">
+          {grant.error.message}
+        </Alert>
+      )}
+      <div className="grid-list" style={{ marginTop: 16 }}>
+        {credentials.data?.items.map((item) => (
+          <Card key={item.id} className="credential-document">
+            <CardHeader>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: 12,
+                }}
+              >
+                <div>
+                  <CardTitle>
+                    {item.payload.academic_record.programme} —{" "}
+                    {item.payload.academic_record.specialization}
+                  </CardTitle>
+                  <CardDescription>
+                    {item.payload.issuer.name} ·{" "}
+                    {item.payload.academic_record.academic_year} ·{" "}
+                    {item.credential_code}
+                  </CardDescription>
+                </div>
+                <div>
+                  <Badge tone={item.signature_valid ? "green" : "red"}>
+                    {item.signature_valid
+                      ? "Signature valid"
+                      : "Signature invalid"}
+                  </Badge>{" "}
+                  {item.revoked && <Badge tone="red">Revoked</Badge>}{" "}
+                  {item.expired && <Badge tone="amber">Expired</Badge>}
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <details>
+                <summary>View signed credential</summary>
+                <pre className="finding-evidence">
+                  {JSON.stringify(item.payload, null, 2)}
+                </pre>
+              </details>
+              <div className="key-values">
+                <div className="key-value">
+                  <span>Subject</span>
+                  <strong>{item.payload.subject.name}</strong>
+                </div>
+                <div className="key-value">
+                  <span>APAAR-linked ID</span>
+                  <strong>{item.payload.subject.apaar_masked}</strong>
+                </div>
+                <div className="key-value">
+                  <span>Signing key</span>
+                  <strong>{item.key_id}</strong>
+                </div>
+                <div className="key-value">
+                  <span>Expiry</span>
+                  <strong>
+                    {parseTimestamp(item.expires_at).toLocaleDateString("en-IN")}
+                  </strong>
+                </div>
+              </div>
+              <div className="page-actions" style={{ marginTop: 16 }}>
+                {me.data?.user.role === "student" && (
+                  <Button
+                    size="sm"
+                    disabled={
+                      item.expired || item.revoked || !item.signature_valid
+                    }
+                    onClick={() =>
+                      setSelected(selected === item.id ? null : item.id)
+                    }
+                  >
+                    <LockKeyhole size={14} /> Share / Verify
+                  </Button>
+                )}
+                <CertificateDownload id={item.id} />
+                <CredentialRevoke id={item.id} />
+              </div>
+              {selected === item.id && (
+                <div
+                  className="consent-dialog"
+                  role="region"
+                  aria-label="Consent sharing preferences"
+                >
+                  <Label>Authorized recipient</Label>
+                  <Input
+                    value={verifier}
+                    onChange={(e) => setVerifier(e.target.value)}
+                  />
+                  <Label style={{ marginTop: 12 }}>
+                    Consent duration (hours)
+                  </Label>
+                  <Input
+                    type="number"
+                    min={1}
+                    max={720}
+                    value={hours}
+                    onChange={(e) => setHours(Number(e.target.value))}
+                  />
+                  <Label style={{ marginTop: 12 }}>Fields to disclose</Label>
+                  <div className="consent-fields">
+                    {fieldOptions.map((field) => (
+                      <label className="checkbox-row" key={field}>
+                        <input
+                          type="checkbox"
+                          checked={fields.includes(field)}
+                          onChange={(e) =>
+                            setFields(
+                              e.target.checked
+                                ? [...fields, field]
+                                : fields.filter((f) => f !== field),
+                            )
+                          }
+                        />
+                        {field.replaceAll("_", " ")}
+                      </label>
+                    ))}
+                  </div>
+                  <Button
+                    size="sm"
+                    onClick={() => grant.mutate(item.id)}
+                    disabled={
+                      grant.isPending ||
+                      !fields.length ||
+                      !Number.isFinite(hours) ||
+                      hours < 1 ||
+                      hours > 720 ||
+                      verifier.trim().length < 2
+                    }
+                  >
+                    {grant.isPending
+                      ? "Creating secure disclosure…"
+                      : `Grant ${hours}-hour consent`}
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        ))}
+        {credentials.isLoading && <div className="skeleton" />}
+      </div>
+      {share && (
+        <Card style={{ marginTop: 16, borderColor: "#9edbd2" }}>
+          <CardHeader>
+            <CardTitle>Secure disclosure created</CardTitle>
+            <CardDescription>
+              The opaque bearer reference is shown once; only its keyed hash is
+              stored.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="alert alert-success">
+              <CheckCircle2 size={19} />
+              <div>
+                <strong>Consent is active</strong>
+                <div>
+                  Open the verifier experience to perform the actual signature,
+                  expiry, revocation and consent checks.
+                </div>
+              </div>
+            </div>
+            <div className="filter-bar" style={{ marginTop: 12 }}>
+              <ShareQr
+                token={share.token}
+                credentialId={selected ?? undefined}
+              />
+              <Input
+                aria-label="Consent sharing link"
+                readOnly
+                value={shareUrl}
+              />
+              <Button
+                size="sm"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(shareUrl);
+                    setCopied(true);
+                  } catch {
+                    setCopyError(
+                      "Clipboard access is unavailable. Select and copy the sharing link manually.",
+                    );
+                  }
+                }}
+              >
+                <Copy size={14} /> {copied ? "Copied" : "Copy"}
+              </Button>
+              <a
+                className="btn btn-secondary btn-sm"
+                href={share.verification_path}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ExternalLink size={14} /> Verify
+              </a>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+      {consents.data?.items.length ? (
+        <Card style={{ marginTop: 16 }}>
+          <CardHeader>
+            <CardTitle>Consent history</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid-list">
+              {consents.data.items.map((item) => (
+                <div className="check-row" key={item.id}>
+                  <span>
+                    <strong>{item.verifier_name}</strong>
+                    <span className="table-secondary">
+                      {item.purpose} · expires{" "}
+                      {parseTimestamp(item.expires_at).toLocaleString("en-IN")}
+                    </span>
+                  </span>
+                  {item.revoked_at ? (
+                    <Badge tone="red">Revoked</Badge>
+                  ) : parseTimestamp(item.expires_at).getTime() < Date.now() ? (
+                    <Badge tone="amber">Expired</Badge>
+                  ) : (
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={() => revoke.mutate(item.id)}
+                    >
+                      Revoke access
+                    </Button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ) : null}
+      <details style={{marginTop:20}}><summary>View verification access history</summary><AccessHistory/></details>
+    </div>
+  );
+}

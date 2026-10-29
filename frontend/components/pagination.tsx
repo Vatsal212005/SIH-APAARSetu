@@ -1,2 +1,37 @@
-import {Button} from '@/components/ui/button';
-export function Pagination({page,total,onChange}:{page:number;total:number;onChange:(page:number)=>void}){return <div className="filter-bar" style={{marginTop:14,justifyContent:'flex-end'}}><Button variant="secondary" size="sm" disabled={page<=1} onClick={()=>onChange(page-1)}>Previous</Button><span style={{fontSize:12}}>Page {page} of {Math.max(1,Math.ceil(total/50))} · {total} records</span><Button variant="secondary" size="sm" disabled={page*50>=total} onClick={()=>onChange(page+1)}>Next</Button></div>}
+import { Button } from "@/components/ui/button";
+export function Pagination({
+  page,
+  total,
+  onChange,
+}: {
+  page: number;
+  total: number;
+  onChange: (page: number) => void;
+}) {
+  return (
+    <div
+      className="filter-bar"
+      style={{ marginTop: 14, justifyContent: "flex-end" }}
+    >
+      <Button
+        variant="secondary"
+        size="sm"
+        disabled={page <= 1}
+        onClick={() => onChange(page - 1)}
+      >
+        Previous
+      </Button>
+      <span style={{ fontSize: 12 }}>
+        Page {page} of {Math.max(1, Math.ceil(total / 50))} · {total} records
+      </span>
+      <Button
+        variant="secondary"
+        size="sm"
+        disabled={page * 50 >= total}
+        onClick={() => onChange(page + 1)}
+      >
+        Next
+      </Button>
+    </div>
+  );
+}

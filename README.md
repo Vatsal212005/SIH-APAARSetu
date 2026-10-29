@@ -55,3 +55,8 @@ Browser tests use the installed Brave executable and live services. See docs/TES
 ## Troubleshooting
 
 If a service exits, inspect runtime/backend.err.log and frontend.err.log. Run stop-dev.ps1 before restarting a partial launch. Do not copy node_modules or a virtual environment between projects; reinstall from the lockfile/requirements instead. The recovered primary directory owns its own environments and has no runtime dependence on staging. Build output remains local to frontend/.next; simultaneous build and dev execution should be avoided. Clear no database to solve a frontend cache error.
+
+## Government-style interface — 29 October 2026
+
+The current interface includes the public gateway, seven-role sign-in, all four portals, scoped case files, guided imports, compliance review, reporting and Demo Centre. Read docs/UI_DESIGN_SYSTEM.md, docs/UI_PAGE_MAP.md, docs/UI_ACCESSIBILITY_RESULTS.md and docs/UI_REDESIGN_TEST_RESULTS.md for the latest implementation and acceptance evidence. Public, login, guidance and verification screens support English/Hindi; protected workspaces remain English.
+

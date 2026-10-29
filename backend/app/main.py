@@ -11,7 +11,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from .api import auth, credentials, demo, management, operations, reports
+from .api import auth, credentials, demo, management, operations, reports, workspace
 from .config import ROOT, settings
 from .database import SessionLocal, init_db
 from .services.credentials import ensure_signing_key
@@ -102,6 +102,7 @@ for api_router in (
     reports.router,
     demo.router,
     management.router,
+    workspace.router,
 ):
     app.include_router(api_router, prefix="/api/v1")
 

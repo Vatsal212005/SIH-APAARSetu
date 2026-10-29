@@ -1,13 +1,98 @@
 "use client";
-
-import {useQuery} from "@tanstack/react-query";
-import type {ColumnDef} from "@tanstack/react-table";
-import {api} from "@/lib/api";
-import {DataTable} from "@/components/data-table";
-import {Badge} from "@/components/ui/badge";
-import {dateTime} from "@/lib/utils";
-
-type Audit={id:string;action:string;entity_type:string;entity_id:string|null;metadata:Record<string,unknown>;created_at:string};
-const columns:ColumnDef<Audit>[]=[{header:"Timestamp",cell:({row})=>dateTime(row.original.created_at)},{header:"Action",cell:({row})=><Badge tone="blue">{row.original.action}</Badge>},{header:"Entity",cell:({row})=><>{row.original.entity_type}<span className="table-secondary">{row.original.entity_id??"—"}</span></>},{header:"Evidence",cell:({row})=><code style={{fontSize:10}}>{JSON.stringify(row.original.metadata).slice(0,120)}</code>}];
-export default function AuditPage(){const query=useQuery({queryKey:["audit"],queryFn:()=>api<{items:Audit[]}>("/audit")});return <div className="page"><div className="page-header"><div className="page-title"><h1>Activity audit trail</h1><p>Authentication, submissions, findings, decisions, consent and verification actions are persisted with actor and scope.</p></div></div>{query.isLoading?<div className="skeleton"/>:query.error?<div className="error-panel">{query.error.message}</div>:<DataTable columns={columns} data={query.data?.items??[]}/>}</div>}
-
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
+import type { Paginated } from "@/lib/types";
+import { Input, Label } from "@/components/ui/input";
+import { PageHeader } from "@/components/portal";
+import { RecordTable } from "@/components/record-table";
+import { Pagination } from "@/components/pagination";
+export default function AuditPage() {
+  const [q, setQ] = useState(""),
+    [start, setStart] = useState(""),
+    [end, setEnd] = useState(""),
+    [page, setPage] = useState(1);
+  const params = new URLSearchParams({ q, page: String(page) });
+  if (start) params.set("start", start);
+  if (end) params.set("end", end);
+  const query = useQuery({
+    queryKey: ["workspace-audit", q, start, end, page],
+    queryFn: () =>
+      api<Paginated<Record<string, unknown>>>("/workspace/audit?" + params),
+  });
+  return (
+    <div className="page">
+      <PageHeader
+        title="Administrative Audit Log"
+        description="Recorded actors, events and evidence. Audit entries have no ordinary application edit or delete action."
+      />
+      <div className="filter-toolbar">
+        <div>
+          <Label htmlFor="audit-search">Search event or reference</Label>
+          <Input
+            id="audit-search"
+            value={q}
+            onChange={(e) => {
+              setQ(e.target.value);
+              setPage(1);
+            }}
+            placeholder="Event, record type or identifier"
+          />
+        </div>
+        <div>
+          <Label htmlFor="audit-start">From date</Label>
+          <Input
+            id="audit-start"
+            type="date"
+            value={start}
+            onChange={(e) => {
+              setStart(e.target.value);
+              setPage(1);
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="audit-end">Through date</Label>
+          <Input
+            id="audit-end"
+            type="date"
+            min={start || undefined}
+            value={end}
+            onChange={(e) => {
+              setEnd(e.target.value);
+              setPage(1);
+            }}
+          />
+        </div>
+      </div>
+      {query.isLoading ? (
+        <div className="skeleton" />
+      ) : query.error ? (
+        <div className="error-panel" role="alert">
+          {query.error.message}
+        </div>
+      ) : (
+        <RecordTable
+          paginate={false}
+          rows={query.data?.items ?? []}
+          fields={[
+            "created_at",
+            "actor",
+            "role",
+            "action",
+            "entity_type",
+            "entity_id",
+            "outcome",
+            "metadata",
+          ]}
+          caption="Administrative audit events"
+        />
+      )}
+      <Pagination
+        page={page}
+        total={query.data?.total ?? 0}
+        onChange={setPage}
+      />
+    </div>
+  );
+}
