@@ -1,0 +1,25 @@
+{
+  "origin": "https://sih-apaarsetu.vercel.app",
+  "commit": "b8743b6bde84fac1c3c762b82ad796121f476733",
+  "passed": 16,
+  "checks": [
+    "public gateway renders at the hosted deployment",
+    "Vercel Python API reaches Neon",
+    "aicte_admin signs in through hosted UI with Secure session cookie",
+    "central dashboard loads real PostgreSQL metrics",
+    "/institutions renders live records",
+    "/students renders live records",
+    "/intakes renders live records",
+    "/anomalies renders live records",
+    "/reports renders live records",
+    "annual reconciliation PDF exports from the hosted API",
+    "student signs in through hosted UI with Secure session cookie",
+    "student sharing and Ed25519 verification work through hosted UI",
+    "consent revocation blocks subsequent hosted disclosure",
+    "student cannot enumerate the institutional register",
+    "institution_operator signs in through hosted UI with Secure session cookie",
+    "CSV preview, validation, CSRF-protected commit and receipt persist in Neon"
+  ],
+  "pageErrors": [],
+  "checked_on": "2026-10-30"
+}

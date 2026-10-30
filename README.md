@@ -4,6 +4,10 @@
 
 Smart India Hackathon 2026 project for **SIH26263**. APAARSetu connects institutional student submissions, approved-intake monitoring, evidence-based discrepancy review and student-controlled credential sharing in one working application.
 
+**Live demonstration: [sih-apaarsetu.vercel.app](https://sih-apaarsetu.vercel.app/)**
+
+The complete Next.js/FastAPI application runs on Vercel with persistent Neon PostgreSQL. Use the [demo accounts](#demonstration-accounts) below. [Hosted verification results](docs/HOSTED_DEMO_RESULTS.md) record the public browser and database checks completed on 30 October 2026.
+
 > **Prototype status:** All demonstration people, institutions and identifiers are fictional. Official APAAR, DigiLocker and AICTE provider connections are unavailable. Identifier format checks and locally signed demonstration credentials do not establish official identity verification. The project does not issue official APAAR IDs or claim government affiliation.
 
 [Quick start](#quick-start-windows) · [Features](#features) · [Architecture](#architecture) · [Testing](#testing-and-verification) · [Documentation](#documentation) · [SIH material](#sih-submission-and-demo-material)
@@ -316,7 +320,7 @@ This repository provides a verified local demonstration. Before a production dep
 - Load testing, independent security assessment and applicable privacy/retention requirements.
 - Recipient authentication if disclosure must bind access to a specific person or organization.
 
-PostgreSQL has not been exercised in the recorded acceptance run. National-scale operation, independent penetration testing and formal accessibility/legal certification are not claimed. Public Hindi coverage does not imply Hindi translations throughout protected workspaces. Table sorting applies to the loaded page; server-side search/filtering/paging covers the complete authorized register.
+The original 29 October acceptance run used SQLite. The 30 October hosted deployment verifies PostgreSQL through live workflows, as recorded in [hosted results](docs/HOSTED_DEMO_RESULTS.md). National-scale operation, independent penetration testing and formal accessibility/legal certification are not claimed. Public Hindi coverage does not imply Hindi translations throughout protected workspaces. Table sorting applies to the loaded page; server-side search/filtering/paging covers the complete authorized register.
 
 ## Troubleshooting
 

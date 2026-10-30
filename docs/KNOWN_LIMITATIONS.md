@@ -2,7 +2,7 @@
 
 The native demonstration uses synthetic records. Official APAAR, DigiLocker and AICTE provider connections remain unavailable. Format/internal checks and local issuer signatures do not authenticate government identities.
 
-Consent uses opaque bearer references, not cryptographically authenticated recipient audiences. The recipient name is a consent label. Local private keys rely on operating-system file permissions; automated multi-key rotation and HSM custody are not implemented. PostgreSQL compatibility is designed through SQLAlchemy but not exercised here. Rate limits use process memory and need shared infrastructure for multiple workers.
+Consent uses opaque bearer references, not cryptographically authenticated recipient audiences. The recipient name is a consent label. Local private keys rely on operating-system file permissions; automated multi-key rotation and HSM custody are not implemented. PostgreSQL is verified in the 30 October 2026 hosted demonstration; see HOSTED_DEMO_RESULTS.md. National-scale load remains unverified. Rate limits use process memory and need shared infrastructure for multiple workers.
 
 The five guided scenarios and ordinary portal workflows use real services. Demo Center consent is explicitly scripted for a fictional student. It does not grant administrators ordinary consent authority. Scenario tokens are shown once and omitted from persisted state. A refresh retains scenario evidence; repeat C to obtain a fresh disclosure reference.
 
