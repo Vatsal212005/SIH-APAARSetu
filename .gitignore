@@ -21,3 +21,17 @@ recovery-checkpoints/
 *.tsbuildinfo
 frontend/.next-test/
 
+
+# Keep local configuration and private signing material out of public source control.
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+*.sqlite
+*.db-wal
+*.db-shm
+*.sqlite3-wal
+*.sqlite3-shm

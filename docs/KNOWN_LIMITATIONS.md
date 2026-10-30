@@ -10,6 +10,6 @@ Imports have deliberate demonstration limits: 10 MB, 10,000 student rows, 50 MB 
 
 Maintenance reminders and session-retention candidate counts run on demand through the administrative job endpoint. Academic-record deletion is not automated. Audit records have no application mutation endpoints but are not tamper-proof against a database administrator. No national-scale load test, independent penetration test or statutory certification has been performed.
 
-No official SIH presentation template was supplied/found. The six-slide editable PPTX and PDF are clearly identified drafts. The source URL is omitted because no GitHub repository was created or published.
+No official SIH presentation template was supplied/found. The six-slide editable PPTX and PDF are clearly identified drafts. The source repository is https://github.com/Vatsal212005/SIH-APAARSetu. Presentation files retain their original draft context; apply the current official template and team details before submission.
 
 Synthetic hold-out model results and tiny deterministic/conflict case sets do not establish production accuracy. See evaluation.json for confusion matrices and measured timings. Desktop computer-use URL inspection was unavailable; automated Brave/Playwright journeys and rendered screenshots provide the browser evidence used here.
