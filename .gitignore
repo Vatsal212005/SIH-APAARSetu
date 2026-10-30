@@ -35,3 +35,5 @@ frontend/.next-test/
 *.db-shm
 *.sqlite3-wal
 *.sqlite3-shm
+.vercel/
+.neon

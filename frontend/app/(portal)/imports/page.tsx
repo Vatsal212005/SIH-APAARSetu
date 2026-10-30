@@ -40,6 +40,7 @@ const supported = [
   "oci_status",
   "foreign_national",
 ];
+const maxUploadMb = Number(process.env.NEXT_PUBLIC_MAX_UPLOAD_MB ?? 10);
 export default function Imports() {
   const client = useQueryClient();
   const [file, setFile] = useState<File | null>(null),
@@ -89,8 +90,8 @@ export default function Imports() {
     mutationFn: (preview: boolean) => {
       const p = programmes.data?.items.find((p) => p.id === selected);
       if (!file || !p) throw new Error("Choose a programme and file.");
-      if (file.size > 10 * 1024 * 1024)
-        throw new Error("File exceeds the 10 MB limit.");
+      if (file.size > maxUploadMb * 1024 * 1024)
+        throw new Error(`File exceeds the ${maxUploadMb} MB limit.`);
       const body = new FormData();
       body.append("file", file);
       body.append("institution_id", p.institution_id);
@@ -212,7 +213,9 @@ export default function Imports() {
               chooseFile(e.dataTransfer.files[0] ?? null);
             }}
           >
-            <Label htmlFor="upload">CSV/XLSX file (up to 10 MB)</Label>
+            <Label htmlFor="upload">
+              CSV/XLSX file (up to {maxUploadMb} MB)
+            </Label>
             <p className="record-subtitle">
               Drop a file here or use the standard file picker. Up to 10,000
               rows; preview shows the first 200.

@@ -18,7 +18,14 @@ connect_args = (
     else {}
 )
 engine = create_engine(
-    settings.database_url, connect_args=connect_args, pool_pre_ping=True
+    settings.database_url,
+    connect_args=connect_args,
+    pool_pre_ping=True,
+    **(
+        {"pool_size": 2, "max_overflow": 2, "pool_recycle": 300}
+        if settings.database_url.startswith("postgresql")
+        else {}
+    ),
 )
 
 

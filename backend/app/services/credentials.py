@@ -27,7 +27,7 @@ from reportlab.platypus import (
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from ..config import RUNTIME
+from ..config import RUNTIME, settings
 from ..models import (
     ConsentGrant,
     Credential,
@@ -54,6 +54,14 @@ def _canonical(payload: dict) -> bytes:
 
 
 def ensure_signing_key() -> tuple[Ed25519PrivateKey, Ed25519PublicKey]:
+    if settings.signing_private_key_b64:
+        private = serialization.load_pem_private_key(
+            base64.b64decode(settings.signing_private_key_b64, validate=True),
+            password=None,
+        )
+        if not isinstance(private, Ed25519PrivateKey):
+            raise RuntimeError("Configured signing key is not Ed25519")
+        return private, private.public_key()
     KEY_DIR.mkdir(parents=True, exist_ok=True)
     if PRIVATE_KEY_PATH.exists():
         private = serialization.load_pem_private_key(

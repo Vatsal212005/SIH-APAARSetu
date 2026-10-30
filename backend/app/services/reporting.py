@@ -14,7 +14,7 @@ from ..models import (
     Programme,
     VerificationEvent,
 )
-from .validation import capacity_snapshot
+from .validation import capacity_snapshots
 
 CATALOG = {
     "institution-enrolment": "Institution-wise enrolment",
@@ -86,20 +86,28 @@ def analysis(
         or kind == "intake-discrepancies"
     ):
         rows = []
-        for intake in db.scalars(
+        intake_rows = db.scalars(
             select(ApprovedIntake).where(
                 ApprovedIntake.institution_id.in_(ids),
                 ApprovedIntake.academic_year == year,
             )
-        ).all():
-            p = db.get(Programme, intake.programme_id)
-            snapshot = capacity_snapshot(db, intake.institution_id, p.id, year)
+        ).all()
+        snapshots = capacity_snapshots(db, intake_rows)
+        programme_names = dict(
+            db.execute(
+                select(Programme.id, Programme.specialization).where(
+                    Programme.id.in_({i.programme_id for i in intake_rows})
+                )
+            ).all()
+        )
+        for intake in intake_rows:
+            snapshot = snapshots[intake.id]
             if kind == "intake-discrepancies" and not snapshot["regular_excess"]:
                 continue
             rows.append(
                 {
                     "institution": names[intake.institution_id],
-                    "programme": p.specialization,
+                    "programme": programme_names[intake.programme_id],
                     "capacity": snapshot[
                         "supernumerary_capacity"
                         if kind == "supernumerary"

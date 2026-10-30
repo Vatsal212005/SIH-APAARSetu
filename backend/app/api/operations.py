@@ -10,6 +10,7 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy import desc, func, or_, select
 from sqlalchemy.orm import Session
 
+from ..config import settings
 from ..database import get_db
 from ..models import (
     ApprovedIntake,
@@ -39,7 +40,7 @@ from ..services.anomaly import run_isolation_forest
 from ..services.common import audit, notify
 from ..services.imports import process_import
 from ..services.validation import (
-    capacity_snapshot,
+    capacity_snapshots,
     refresh_intake_finding,
     validate_student_row,
 )
@@ -421,6 +422,7 @@ def intakes(
     elif user.role == Role.regional_officer.value:
         query = query.where(Institution.region == user.region)
     rows = db.execute(query.limit(500)).all()
+    snapshots = capacity_snapshots(db, [intake for intake, _, _ in rows])
     return {
         "items": [
             {
@@ -430,9 +432,7 @@ def intakes(
                 "programme_id": programme.id,
                 "programme": f"{programme.name} — {programme.specialization}",
                 "academic_year": intake.academic_year,
-                **capacity_snapshot(
-                    db, intake.institution_id, programme.id, academic_year
-                ),
+                **snapshots[intake.id],
                 "approval_status": intake.approval_status,
             }
             for intake, programme, institution in rows
@@ -695,9 +695,10 @@ async def import_students(
 ) -> dict:
     enforce_institution_scope(user, institution_id)
     content = await file.read()
-    if len(content) > 10 * 1024 * 1024:
+    if len(content) > settings.max_upload_bytes:
         raise HTTPException(
-            status_code=413, detail="Upload exceeds the 10 MB demonstration limit"
+            status_code=413,
+            detail=f"Upload exceeds the {settings.max_upload_bytes // (1024 * 1024)} MB demonstration limit",
         )
     try:
         column_mapping = json.loads(mapping)

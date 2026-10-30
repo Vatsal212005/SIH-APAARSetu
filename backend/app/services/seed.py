@@ -90,14 +90,15 @@ def seed_demo(
         db.add(policy)
         db.flush()
 
+    existing_institutions = {item.id: item for item in db.scalars(select(Institution))}
     institutions = [
-        db.get(Institution, sid("institution", str(index)))
+        existing_institutions.get(sid("institution", str(index)))
         for index in range(institution_count)
     ]
     if any(institution is None for institution in institutions):
         institutions = []
         for index in range(institution_count):
-            existing = db.get(Institution, sid("institution", str(index)))
+            existing = existing_institutions.get(sid("institution", str(index)))
             if existing:
                 institutions.append(existing)
                 continue
@@ -119,11 +120,12 @@ def seed_demo(
             institutions.append(institution)
         db.flush()
 
+    existing_programmes = {item.id: item for item in db.scalars(select(Programme))}
     programmes: list[Programme] = []
     for i, institution in enumerate(institutions[:institution_count]):
         for code, name, specialization in PROGRAMMES:
             programme_id = sid("programme", f"{i}:{code}")
-            programme = db.get(Programme, programme_id)
+            programme = existing_programmes.get(programme_id)
             if not programme:
                 programme = Programme(
                     id=programme_id,
@@ -137,12 +139,13 @@ def seed_demo(
             programmes.append(programme)
     db.flush()
 
+    existing_intake_ids = set(db.scalars(select(ApprovedIntake.id)))
     for i, institution in enumerate(institutions[:institution_count]):
         for p_index, _spec in enumerate(PROGRAMMES):
             programme = programmes[i * 3 + p_index]
             for year in ("2024-25", "2025-26", "2026-27"):
                 intake_id = sid("intake", f"{programme.id}:{year}")
-                if db.get(ApprovedIntake, intake_id):
+                if intake_id in existing_intake_ids:
                     continue
                 regular = (
                     120
@@ -166,9 +169,10 @@ def seed_demo(
 
     current_students = db.scalar(select(func.count(Student.id))) or 0
     if current_students < student_count:
+        existing_student_ids = set(db.scalars(select(Student.id)))
         for index in range(student_count):
             student_id = sid("student", str(index))
-            if db.get(Student, student_id):
+            if student_id in existing_student_ids:
                 continue
             apaar = f"{700000000000 + index:012d}"
             student = Student(
@@ -261,10 +265,23 @@ def seed_demo(
         refresh_intake_finding(db, institutions[0].id, programmes[0].id, "2025-26")
 
     # Historical enrolments reuse student identity and remain outside the current-year snapshot.
+    source_ids = [
+        sid("enrolment", str(index)) for index in range(min(student_count, 1000))
+    ]
+    history_ids = [
+        sid("history", str(index)) for index in range(min(student_count, 1000))
+    ]
+    history_sources = {
+        item.id: item
+        for item in db.scalars(select(Enrolment).where(Enrolment.id.in_(source_ids)))
+    }
+    existing_history_ids = set(
+        db.scalars(select(Enrolment.id).where(Enrolment.id.in_(history_ids)))
+    )
     for index in range(min(student_count, 1000)):
         history_id = sid("history", str(index))
-        source = db.get(Enrolment, sid("enrolment", str(index)))
-        if source and not db.get(Enrolment, history_id):
+        source = history_sources.get(sid("enrolment", str(index)))
+        if source and history_id not in existing_history_ids:
             db.add(
                 Enrolment(
                     id=history_id,

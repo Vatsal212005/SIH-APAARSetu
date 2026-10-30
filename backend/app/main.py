@@ -38,9 +38,10 @@ logger = logging.getLogger("apaarsetu")
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    init_db()
+    if settings.auto_initialize:
+        init_db()
     ensure_signing_key()
-    if settings.demo_mode:
+    if settings.demo_mode and settings.auto_initialize:
         with SessionLocal() as db:
             summary = seed_demo(db)
             logger.info(

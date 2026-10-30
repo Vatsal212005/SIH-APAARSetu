@@ -25,7 +25,7 @@ from ..models import (
 )
 from ..security import current_user, require_roles
 from ..services.common import audit
-from ..services.validation import capacity_snapshot
+from ..services.validation import capacity_snapshots
 from .operations import _enrolment_view, _institution_scope
 
 router = APIRouter(prefix="/workspace", tags=["workspace read models"])
@@ -110,17 +110,23 @@ def overview(
         policies = policies.where(ApprovedIntake.academic_year == academic_year)
     if programme_id:
         policies = policies.where(ApprovedIntake.programme_id == programme_id)
+    intake_rows = list(db.scalars(policies))
+    snapshots = capacity_snapshots(db, intake_rows)
+    programme_names = dict(
+        db.execute(
+            select(Programme.id, Programme.specialization).where(
+                Programme.id.in_({i.programme_id for i in intake_rows})
+            )
+        ).all()
+    )
     capacity = []
-    for intake in db.scalars(policies):
-        programme = db.get(Programme, intake.programme_id)
-        snapshot = capacity_snapshot(
-            db, intake.institution_id, intake.programme_id, intake.academic_year
-        )
+    for intake in intake_rows:
+        snapshot = snapshots[intake.id]
         capacity.append(
             {
                 "institution": by_id[intake.institution_id].name,
                 "institution_id": intake.institution_id,
-                "programme": programme.specialization,
+                "programme": programme_names[intake.programme_id],
                 "academic_year": intake.academic_year,
                 **snapshot,
             }

@@ -71,6 +71,8 @@ Automated accessibility results are documented below. They do not constitute for
 
 ## Quick start (Windows)
 
+For cloud hosting, see [Vercel and Neon deployment](docs/DEPLOYMENT_VERCEL.md). The repository includes a two-service Vercel configuration, PostgreSQL support, explicit cloud initialization and stable environment-backed signing keys. Hosted uploads use a 3 MB limit; the local default remains 10 MB.
+
 ### Prerequisites
 
 - Windows with PowerShell and Git.

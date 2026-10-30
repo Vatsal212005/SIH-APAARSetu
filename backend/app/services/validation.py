@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import re
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date
 
-from sqlalchemy import func, select
+from sqlalchemy import func, select, tuple_
 from sqlalchemy.orm import Session
 
 from ..models import (
@@ -162,15 +163,9 @@ def capacity_snapshot(
         .group_by(Enrolment.seat_type)
     ).all()
     counts = {key: value for key, value in rows}
-    regular = sum(
-        counts.get(seat, 0) for seat in rules.get("regular_counts", ["regular"])
-    )
-    supernumerary = sum(
-        counts.get(seat, 0)
-        for seat in rules.get("supernumerary_counts", ["supernumerary"])
-    )
+    nri_count = 0
     if rules.get("nri_exempt_from_regular", False):
-        regular -= (
+        nri_count = (
             db.scalar(
                 select(func.count(Enrolment.id)).where(
                     Enrolment.institution_id == institution_id,
@@ -183,6 +178,83 @@ def capacity_snapshot(
             )
             or 0
         )
+    return _capacity_result(intake, policy, counts, nri_count)
+
+
+def capacity_snapshots(db: Session, intakes: list[ApprovedIntake]) -> dict[str, dict]:
+    """Count scoped programme/year cohorts together, preserving each policy's rules."""
+    if not intakes:
+        return {}
+    keys = [(i.institution_id, i.programme_id, i.academic_year) for i in intakes]
+    policies = {
+        p.id: p
+        for p in db.scalars(
+            select(CapacityPolicy).where(
+                CapacityPolicy.id.in_({i.policy_id for i in intakes})
+            )
+        )
+    }
+    groups = db.execute(
+        select(
+            Enrolment.institution_id,
+            Enrolment.programme_id,
+            Enrolment.academic_year,
+            Enrolment.status,
+            Enrolment.seat_type,
+            Enrolment.nri_category,
+            func.count(Enrolment.id),
+        )
+        .where(
+            tuple_(
+                Enrolment.institution_id,
+                Enrolment.programme_id,
+                Enrolment.academic_year,
+            ).in_(keys)
+        )
+        .group_by(
+            Enrolment.institution_id,
+            Enrolment.programme_id,
+            Enrolment.academic_year,
+            Enrolment.status,
+            Enrolment.seat_type,
+            Enrolment.nri_category,
+        )
+    )
+    cohorts = {}
+    for institution, programme, year, status, seat, nri, count in groups:
+        cohorts.setdefault((institution, programme, year), []).append(
+            (status, seat, nri, count)
+        )
+    result = {}
+    for intake in intakes:
+        policy = policies.get(intake.policy_id)
+        rules = policy.rules if policy else {}
+        statuses = rules.get("count_statuses", list(ACTIVE_STATUSES))
+        counts = Counter()
+        nri_count = 0
+        for status, seat, nri, count in cohorts.get(
+            (intake.institution_id, intake.programme_id, intake.academic_year), []
+        ):
+            if status in statuses:
+                counts[seat] += count
+                if seat == "regular" and nri:
+                    nri_count += count
+        result[intake.id] = _capacity_result(intake, policy, counts, nri_count)
+    return result
+
+
+def _capacity_result(intake, policy, counts, nri_count):
+    rules = policy.rules if policy else {}
+    count_statuses = rules.get("count_statuses", list(ACTIVE_STATUSES))
+    regular = sum(
+        counts.get(seat, 0) for seat in rules.get("regular_counts", ["regular"])
+    )
+    supernumerary = sum(
+        counts.get(seat, 0)
+        for seat in rules.get("supernumerary_counts", ["supernumerary"])
+    )
+    if rules.get("nri_exempt_from_regular", False):
+        regular -= nri_count
     return {
         "configured": True,
         "regular_capacity": intake.regular_capacity,
