@@ -100,7 +100,7 @@ def activity_report(
 
 
 def report_rows(db: Session, user: User, academic_year: str) -> list[dict]:
-    from ..services.validation import capacity_snapshot
+    from ..services.validation import capacity_snapshots
 
     query = (
         select(ApprovedIntake, Programme, Institution)
@@ -112,16 +112,24 @@ def report_rows(db: Session, user: User, academic_year: str) -> list[dict]:
         query = query.where(Institution.id == user.institution_id)
     elif user.role == "regional_officer":
         query = query.where(Institution.region == user.region)
+    cohorts = db.execute(query).all()
+    snapshots = capacity_snapshots(db, [intake for intake, _, _ in cohorts])
+    records_by_programme = {}
+    for record in db.scalars(
+        select(Enrolment).where(
+            Enrolment.programme_id.in_({programme.id for _, programme, _ in cohorts}),
+            Enrolment.academic_year == academic_year,
+        )
+    ):
+        records_by_programme.setdefault(record.programme_id, []).append(record)
     rows = []
-    for intake, programme, institution in db.execute(query).all():
-        snapshot = capacity_snapshot(db, institution.id, programme.id, academic_year)
-        records = db.scalars(
-            select(Enrolment).where(
-                Enrolment.programme_id == programme.id,
-                Enrolment.academic_year == academic_year,
-                Enrolment.status.in_(snapshot["counted_statuses"]),
-            )
-        ).all()
+    for intake, programme, institution in cohorts:
+        snapshot = snapshots[intake.id]
+        records = [
+            record
+            for record in records_by_programme.get(programme.id, [])
+            if record.status in snapshot["counted_statuses"]
+        ]
         rows.append(
             {
                 "institution": institution.name,
